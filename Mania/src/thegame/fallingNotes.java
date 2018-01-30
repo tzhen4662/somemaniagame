@@ -25,9 +25,9 @@ public class fallingNotes extends Application{
 		
 		Line line = new Line();
 		line.setStartX(0.0);
-		line.setStartY(200.0);
+		line.setStartY(-400.0);
 		line.setEndX(0.0);
-		line.setEndY(-200.0);
+		line.setEndY(600.0);
 		
 		PathTransition transition = new PathTransition();
 		transition.setNode(circle);
