@@ -1,59 +1,47 @@
 package thegame;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
-import java.awt.Button;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Timer;
-
-public class startScreen 
-{
-	public class GameCode extends Application
-	{
-		Label lb_text;
-		Button btn_click;
-		
+public class startScreen extends Application
+{	
 		public static void main(String[] args){
-			launch(args);
+			Application.launch(args);
 		}
-		
+
 		@Override
 		public void start(Stage primaryStage) throws Exception 
 		{
-			lb_text = new Label("Start");
-			btn_click = new Button("SButton");
+			Button button = new Button();
+			button.setText("'Start'");
+			Button button2 = new Button();
+			button2.setText("'Highscores'");
+			Button button3 = new Button();
+			button3.setText("'Controls'");
 			
-			btn_click.setOnAction(new EventHandler<ActionEvent>{}
-			{
-				@Override
-				public void handle(ActionEvent arg0) 
-				{
-					lb_text.setText("Some Text");
-				}
-			};
-			/*Text Start = new Text();
-			Button Start = new Button("Start");
-	    
-			Text HScore = new Text();
-			Button HScore = new Button("HScore");
-	    
-	    
-			Text Controls = new Text();
-			Button Controls = new Button("Controls");*/
+			button.setMaxSize(500, 70);
+			button2.setMaxSize(500, 70);
+			button3.setMaxSize(500, 70);
+			
+			Pane root = new Pane();
+		    root.getChildren().add(button);
+		    root.getChildren().add(button2);
+		    root.getChildren().add(button3);
+			button.setLayoutX(450);
+			button.setLayoutY(400);
+			button2.setLayoutX(450);
+			button2.setLayoutY(450);
+			button3.setLayoutX(450);
+			button3.setLayoutY(500);
+		    Scene scene = new Scene(root, 1000, 1000);
+		    primaryStage.setScene(scene);
+		    primaryStage.show();
+		    
+		    /*scene.getStylesheets().add("CSS");
+		    stage.show();*/
 		}
-	    VBox root = new VBox();
-	    root.getChildren().addAll(lb_text, btn_click);
-	    
-	    Scene scene = new Scene(root, 500, 500);
-	    stage.setScene(scene);
-	    
-	    scene.getStylesheets().add("CSS");
-	    
-	    stage.show();
-	 }
 }
