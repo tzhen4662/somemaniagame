@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.io.FileReader;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,9 @@ public class cSVUlities
 {
 	private String Name;
 	private int Score;
-	private static ArrayList<String> CSVData = new ArrayList<String>();
 	public cSVUlities(String Name, int Score)
 	{
+		
 		this.Name = Name;
 		this.Score = Score;
 	}
@@ -30,20 +31,23 @@ public class cSVUlities
 	        sb.append(',');
 	        sb.append("Name");
 	        sb.append('\n');
-
+	        
 	        pw.write(sb.toString());
-	        pw.close();
 	        System.out.println(path);
+	        writeCSV("Brandon", 167, CSV);
+	        for (String x : getinfo(CSV))
+	            System.out.println(x + "");
 	}
-	public void getinfo(File CSV)
+	public static ArrayList<String> getinfo(File CSV)
 	{
+		ArrayList<String> CSVData = new ArrayList<String>();
 		Path pathToFile = Paths.get(CSV.getAbsolutePath());
 		try (BufferedReader br = Files.newBufferedReader(pathToFile,StandardCharsets.US_ASCII))
 		{
 			String line = br.readLine();
 			while(line != null)
 			{
-				this.CSVData.add(line);
+				CSVData.add(line);
 				line = br.readLine();
 			}
 		}		
@@ -51,8 +55,21 @@ public class cSVUlities
 			{
 				ioe.printStackTrace();
 			}
+		return CSVData;
 	}
-	public static void checkScores(String Score, String Name)
+	public static void writeCSV(String Name, int Score, File CSV) throws FileNotFoundException
+	{
+		PrintWriter pw = new PrintWriter(CSV);
+        StringBuilder sb = new StringBuilder();
+        sb.append(Name);
+        sb.append(',');
+        sb.append(Score);
+        sb.append('\n');
+        pw.write(sb.toString());
+        pw.close();
+	}
+	//public static 
+/*	public static void checkScores(String Score, String Name)
 	{
 		ArrayList<String> csvCopy = CSVData;
 		for(int i = 3; i < CSVData.size(); i+= 2)
@@ -64,4 +81,14 @@ public class cSVUlities
 			}
 		}
 	}
+	public static void printCSV(File CSV) throws IOException
+	{
+		  String currentLine;
+		  BufferedReader br;
+		  br = new BufferedReader(new FileReader("test.csv"));
+	        while ((currentLine = br.readLine()) != null) { 
+	            String[] str = currentLine.split(",");
+	            System.out.println("Name" + str[0] + ", Highscore" + str[1]); 
+	        }
+	}*/
 }
