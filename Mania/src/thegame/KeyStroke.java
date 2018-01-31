@@ -1,4 +1,5 @@
 package thegame;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -19,14 +20,16 @@ public class KeyStroke extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         
+        long startTime = System.currentTimeMillis();
+        long elapsedTime = 10000000000L;
+        //time does not work right now
         button.setOnKeyPressed(new EventHandler<KeyEvent>() {
-        	
         	
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
-                    System.out.println("Enter Pressed");
-                }
+                if ((event.getCode() == KeyCode.SPACE) && (elapsedTime > startTime)) {
+                    System.out.println("Space");
+                }          
                 if(event.getCode() == KeyCode.D) {
                 	//count++;
                 	System.out.println("D");
@@ -37,12 +40,11 @@ public class KeyStroke extends Application {
                 if(event.getCode() == KeyCode.J) {
                 	System.out.println("J");
                 }
-                if(event.getCode() == KeyCode.K) {
+                if(event.getCode() == KeyCode.K) {      
                 	System.out.println("K");
                 }
             }
         });
-        
     }
 
     public static void main(String[] args) {
