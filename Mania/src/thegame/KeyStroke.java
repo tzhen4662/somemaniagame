@@ -10,38 +10,34 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class KeyStroke extends Application {
-	 int count =0;
+	 int count = 0;
     @Override
     public void start(Stage primaryStage) throws Exception {
         BorderPane pane = new BorderPane();
         Button button = new Button("Press M");
+        //button.setText("" + count);
         pane.setCenter(button);
         Scene scene = new Scene(pane, 200, 200);
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        long startTime = System.currentTimeMillis();
-        long elapsedTime = 10000000000L;
-        //time does not work right now
         button.setOnKeyPressed(new EventHandler<KeyEvent>() {
-        	
             @Override
             public void handle(KeyEvent event) {
-                if ((event.getCode() == KeyCode.SPACE) && (elapsedTime > startTime)) {
-                    System.out.println("Space");
+                if (event.getCode() == KeyCode.SPACE){
+                  button.setText("Space");
                 }          
                 if(event.getCode() == KeyCode.D) {
-                	//count++;
-                	System.out.println("D");
+                	button.setText("D");
                 }
                 if(event.getCode() == KeyCode.F) {
-                	System.out.println("F");
+                	button.setText("F");
                 }
                 if(event.getCode() == KeyCode.J) {
-                	System.out.println("J");
+                	button.setText("J");
                 }
                 if(event.getCode() == KeyCode.K) {      
-                	System.out.println("K");
+                	button.setText("K");
                 }
             }
         });
