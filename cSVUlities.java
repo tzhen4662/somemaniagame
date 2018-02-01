@@ -15,13 +15,16 @@ public class cSVUlities
 {
 	private String Name;
 	private int Score;
-	public cSVUlities(String Name, int Score)
+	private ArrayList<String> CSVData = new ArrayList<String>();
+	private File CSV;
+	public cSVUlities(String Name, int Score, File CSV)
 	{
-		
+		this.CSVData = getinfo(CSV);
+		this.CSV = CSV;
 		this.Name = Name;
 		this.Score = Score;
 	}
-	public static void main(String[]args) throws FileNotFoundException
+	public static void main(String[]args) throws IOException
 	{
 		File CSV = new File("test.csv");
 		String path = CSV.getAbsolutePath();
@@ -34,7 +37,8 @@ public class cSVUlities
 	        
 	        pw.write(sb.toString());
 	        System.out.println(path);
-	        writeCSV("Brandon", 167, CSV);
+	        writeCSV("Channer", 169, CSV);
+	        writeCSV("Jacky", 168, CSV);
 	        for (String x : getinfo(CSV))
 	            System.out.println(x + "");
 	}
@@ -57,11 +61,25 @@ public class cSVUlities
 			}
 		return CSVData;
 	}
-	public static void writeCSV(String Name, int Score, File CSV) throws FileNotFoundException
+	public static void writeCSV(String Name, int Score, File CSV) throws IOException
 	{
 		PrintWriter pw = new PrintWriter(CSV);
         StringBuilder sb = new StringBuilder();
+        sb.append("Name");
+        sb.append(',');
+        sb.append("Highscore");
+        sb.append('\n');
         sb.append(Name);
+        BufferedReader magic = new BufferedReader(new FileReader("test.csv"));
+        String line;
+        while ((line = magic.readLine()) != null)
+        {
+            String[] arr = line.split(",");
+            System.out.println(arr[0]);
+            System.out.println(arr[1]);
+            sb.append(arr[0]);
+            sb.append(arr[1]);
+        }
         sb.append(',');
         sb.append(Score);
         sb.append('\n');
