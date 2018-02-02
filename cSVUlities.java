@@ -28,14 +28,6 @@ public class cSVUlities
 	{
 		File CSV = new File("test.csv");
 		String path = CSV.getAbsolutePath();
-		PrintWriter pw = new PrintWriter(CSV);
-	        StringBuilder sb = new StringBuilder();
-	        sb.append("highscore");
-	        sb.append(',');
-	        sb.append("Name");
-	        sb.append('\n');
-	        
-	        pw.write(sb.toString());
 	        System.out.println(path);
 	        writeCSV("Channer", 169, CSV);
 	        writeCSV("Jacky", 168, CSV);
@@ -61,6 +53,7 @@ public class cSVUlities
 			}
 		return CSVData;
 	}
+	public 
 	public static void writeCSV(String Name, int Score, File CSV) throws IOException
 	{
 		PrintWriter pw = new PrintWriter(CSV);
@@ -69,22 +62,23 @@ public class cSVUlities
         sb.append(',');
         sb.append("Highscore");
         sb.append('\n');
-        sb.append(Name);
-        BufferedReader magic = new BufferedReader(new FileReader("test.csv"));
-        String line;
+        BufferedReader magic = new BufferedReader(new FileReader(CSV));
+        String line = magic.readLine();
+        System.out.println(":thinking:");
         while ((line = magic.readLine()) != null)
         {
             String[] arr = line.split(",");
-            System.out.println(arr[0]);
-            System.out.println(arr[1]);
             sb.append(arr[0]);
             sb.append(arr[1]);
+            line = magic.readLine();
         }
+        sb.append(Name);
         sb.append(',');
         sb.append(Score);
         sb.append('\n');
         pw.write(sb.toString());
         pw.close();
+        magic.close();
 	}
 	//public static 
 /*	public static void checkScores(String Score, String Name)
