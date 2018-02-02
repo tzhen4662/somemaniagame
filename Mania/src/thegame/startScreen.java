@@ -3,8 +3,10 @@ package thegame;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class startScreen extends Application
@@ -14,8 +16,11 @@ public class startScreen extends Application
 		}
 
 		@Override
-		public void start(Stage primaryStage) throws Exception 
+		public void start(Stage primaryStage) throws Exception
 		{
+			Label Title = new Label();
+			Title.setText("Game Title");
+			Title.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em; -fx-text-fill: #0000CC; -fx-border-width: 2; -fx-border-color: #99CCFF");
 			Button button = new Button();
 			button.setText("'Start'");
 			button.setStyle("-fx-border-color: #0000ff; -fx-background-color: #00BFFF; -fx-font-size: 1.5em");
@@ -41,9 +46,12 @@ public class startScreen extends Application
 			});
 	       
 			Pane root = new Pane();
+			root.getChildren().add(Title);
 		    root.getChildren().add(button);
 		    root.getChildren().add(button2);
 		    root.getChildren().add(button3);
+		    Title.setLayoutX(200);
+			Title.setLayoutY(110);
 			button.setLayoutX(250);
 			button.setLayoutY(200);
 			button2.setLayoutX(225);
