@@ -121,8 +121,8 @@ public class fallingNotes extends Application{
 		transition5.play();
 		
 		//These are the clicker circles at the bottom
-		clickCircle1.setCenterX(5000000000000.0);
-		clickCircle1.setCenterY(5000000000000.0);
+		clickCircle1.setCenterX(5000000000.0);
+		clickCircle1.setCenterY(111111111111111111.0);
 		clickCircle1.setRadius(50.0);
 		
 		clickCircle2.setCenterX(100.0);
@@ -153,7 +153,7 @@ public class fallingNotes extends Application{
         //root.getChildren().add(clickCircle3);
         //root.getChildren().add(clickCircle4);
         //root.getChildren().add(clickCircle5);
-        Scene scene = new Scene(root, 1000, 1000);
+        Scene scene = new Scene(root, 500, 500);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
