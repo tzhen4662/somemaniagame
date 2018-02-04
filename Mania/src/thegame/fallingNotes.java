@@ -4,37 +4,42 @@ import java.util.Random;
 
 import javafx.animation.PathTransition;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class fallingNotes extends Application{
 
-	Random r = new Random();
-	Circle circle1 = new Circle();
-	Circle circle2 = new Circle();
-	Circle circle3 = new Circle();
-	Circle circle4 = new Circle();
-	Circle circle5 = new Circle();
-	Circle clickCircle1 = new Circle();
-	Circle clickCircle2 = new Circle();
-	Circle clickCircle3 = new Circle();
-	Circle clickCircle4 = new Circle();
-	Circle clickCircle5 = new Circle();
-	Line line1 = new Line();
-	Line line2 = new Line();
-	Line line3 = new Line();
-	Line line4 = new Line();
-	Line line5 = new Line();
-	PathTransition transition1 = new PathTransition();
-	PathTransition transition2 = new PathTransition();
-	PathTransition transition3 = new PathTransition();
-	PathTransition transition4 = new PathTransition();
-	PathTransition transition5 = new PathTransition();
-	
+	private Random r = new Random();
+	private Circle circle1 = new Circle();
+	private Circle circle2 = new Circle();
+	private Circle circle3 = new Circle();
+	private Circle circle4 = new Circle();
+	private Circle circle5 = new Circle();
+	private Circle clickCircle1 = new Circle(-200, 600, 20);
+	private Circle clickCircle2 = new Circle(-100, 600, 20);
+	private Circle clickCircle3 = new Circle(0, 600, 20);
+	private Circle clickCircle4 = new Circle(100, 600, 20);
+	private Circle clickCircle5 = new Circle(200, 600, 20);
+	private Line line1 = new Line();
+	private Line line2 = new Line();
+	private Line line3 = new Line();
+	private Line line4 = new Line();
+	private Line line5 = new Line();
+	private PathTransition transition1 = new PathTransition();
+	private PathTransition transition2 = new PathTransition();
+	private PathTransition transition3 = new PathTransition();
+	private PathTransition transition4 = new PathTransition();
+	private PathTransition transition5 = new PathTransition();
+	private int score = 0;
+	private Text texts = new Text("" + score + "");
 	
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -45,49 +50,35 @@ public class fallingNotes extends Application{
 		double n4 = r.nextDouble() + 2;
 		double n5 = r.nextDouble() + 2;
 			
-		circle1.setCenterX(100.0);
-		circle1.setCenterY(100.0);
-		circle1.setRadius(50.0);
+		circle1.setRadius(20.0);
+		circle2.setRadius(20.0);
+		circle3.setRadius(20.0);
+		circle4.setRadius(20.0);
+		circle5.setRadius(20.0);
 		
-		circle2.setCenterX(100.0);
-		circle2.setCenterY(100.0);
-		circle2.setRadius(50.0);
-		
-		circle3.setCenterX(100.0);
-		circle3.setCenterY(100.0);
-		circle3.setRadius(50.0);
-		
-		circle4.setCenterX(100.0);
-		circle4.setCenterY(100.0);
-		circle4.setRadius(50.0);
-		
-		circle5.setCenterX(100.0);
-		circle5.setCenterY(100.0);
-		circle5.setRadius(50.0);
-		
-		line1.setStartX(-100.0);
+		line1.setStartX(-200.0);
 		line1.setStartY(-400.0);
-		line1.setEndX(-100.0);
+		line1.setEndX(-200.0);
 		line1.setEndY(600.0);
 		
-		line2.setStartX(0.0);
+		line2.setStartX(-100.0);
 		line2.setStartY(-400.0);
-		line2.setEndX(0.0);
+		line2.setEndX(-100.0);
 		line2.setEndY(600.0);
 		
-		line3.setStartX(100.0);
+		line3.setStartX(0.0);
 		line3.setStartY(-400.0);
-		line3.setEndX(100.0);
+		line3.setEndX(0.0);
 		line3.setEndY(600.0);
 		
-		line4.setStartX(200.0);
+		line4.setStartX(100.0);
 		line4.setStartY(-400.0);
-		line4.setEndX(200.0);
+		line4.setEndX(100.0);
 		line4.setEndY(600.0);
 		
-		line5.setStartX(300.0);
+		line5.setStartX(200.0);
 		line5.setStartY(-400.0);
-		line5.setEndX(300.0);
+		line5.setEndX(200.0);
 		line5.setEndY(600.0);
 			
 		transition1.setNode(circle1);
@@ -120,50 +111,42 @@ public class fallingNotes extends Application{
 		transition5.setCycleCount(transition1.INDEFINITE);
 		transition5.play();
 		
-		//These are the clicker circles at the bottom
-		clickCircle1.setCenterX(5000000000.0);
-		clickCircle1.setCenterY(111111111111111111.0);
-		clickCircle1.setRadius(50.0);
-		
-		clickCircle2.setCenterX(100.0);
-		clickCircle2.setCenterY(600.0);
-		clickCircle2.setRadius(50.0);
-		
-		clickCircle3.setCenterX(200.0);
-		clickCircle3.setCenterY(600.0);
-		clickCircle3.setRadius(50.0);
-
-		
-		clickCircle4.setCenterX(300.0);
-		clickCircle4.setCenterY(600.0);
-		clickCircle4.setRadius(50.0);
-		
-		clickCircle5.setCenterX(400.0);
-		clickCircle5.setCenterY(600.0);
-		clickCircle5.setRadius(50.0);
+		/*texts.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.SPACE){
+                  texts.setText("Space");
+                  score++;
+                }          
+                if(event.getCode() == KeyCode.D) {
+                	texts.setText("D");
+                	score++;
+                }
+                if(event.getCode() == KeyCode.F) {
+                	texts.setText("F");
+                	score++;
+                }
+                if(event.getCode() == KeyCode.J) {
+                	texts.setText("J");
+                	score++;
+                }
+                if(event.getCode() == KeyCode.K) {      
+                	texts.setText("K");
+                	score++;
+                }
+            }
+        });*/
 		
 		StackPane root = new StackPane();
-        root.getChildren().add(circle1);
-        root.getChildren().add(circle2);
-        root.getChildren().add(circle3);
-        root.getChildren().add(circle4);
-        root.getChildren().add(circle5);
-        root.getChildren().add(clickCircle1);
-        //root.getChildren().add(clickCircle2);
-        //root.getChildren().add(clickCircle3);
-        //root.getChildren().add(clickCircle4);
-        //root.getChildren().add(clickCircle5);
-        Scene scene = new Scene(root, 500, 500);
-        stage.setResizable(false);
+		root.getChildren().addAll(clickCircle1, clickCircle2, clickCircle3, clickCircle4, clickCircle5);
+		root.getChildren().add(texts);
+        root.getChildren().addAll(circle1, circle2, circle3, circle4, circle5);
+        Scene scene = new Scene(root, 600, 600);
+        //stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 	}
-	
-	/*public static void keyStroke()
-	{
-		if 
-	}*/
-	
+
 	public static void main(String[] args) {
         Application.launch(args);    
     }
