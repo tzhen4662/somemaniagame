@@ -102,7 +102,7 @@ public class cSVUlities
 		}
 		return yes;
 	}
-	public static void writeCSV(String Name, int Score, File CSV) throws IOException
+	public static void writeCSV(String Name, int Scores, File CSV) throws IOException
 	{
 		PrintWriter pw = new PrintWriter(CSV);
         StringBuilder sb = new StringBuilder();
@@ -122,7 +122,7 @@ public class cSVUlities
         }
         sb.append(Name);
         sb.append(',');
-        sb.append(Score);
+        sb.append(Scores);
         sb.append('\n');
         pw.write(sb.toString());
         pw.close();
