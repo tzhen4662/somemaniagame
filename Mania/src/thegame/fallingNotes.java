@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -23,11 +24,11 @@ public class fallingNotes extends Application{
 	private Circle circle3 = new Circle();
 	private Circle circle4 = new Circle();
 	private Circle circle5 = new Circle();
-	private Circle clickCircle1 = new Circle(-200, 600, 20);
-	private Circle clickCircle2 = new Circle(-100, 600, 20);
-	private Circle clickCircle3 = new Circle(0, 600, 20);
-	private Circle clickCircle4 = new Circle(100, 600, 20);
-	private Circle clickCircle5 = new Circle(200, 600, 20);
+	private Circle clickCircle1 = new Circle(100, 590, 20);
+	private Circle clickCircle2 = new Circle(200, 590, 20);
+	private Circle clickCircle3 = new Circle(300, 590, 20);
+	private Circle clickCircle4 = new Circle(400, 590, 20);
+	private Circle clickCircle5 = new Circle(500, 590, 20);
 	private Line line1 = new Line();
 	private Line line2 = new Line();
 	private Line line3 = new Line();
@@ -39,7 +40,7 @@ public class fallingNotes extends Application{
 	private PathTransition transition4 = new PathTransition();
 	private PathTransition transition5 = new PathTransition();
 	private int score = 0;
-	private Text texts = new Text("" + score + "");
+	private Text text = new Text("");
 	
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -56,29 +57,29 @@ public class fallingNotes extends Application{
 		circle4.setRadius(20.0);
 		circle5.setRadius(20.0);
 		
-		line1.setStartX(-200.0);
+		line1.setStartX(100.0);
 		line1.setStartY(-400.0);
-		line1.setEndX(-200.0);
+		line1.setEndX(100.0);
 		line1.setEndY(600.0);
 		
-		line2.setStartX(-100.0);
+		line2.setStartX(200.0);
 		line2.setStartY(-400.0);
-		line2.setEndX(-100.0);
+		line2.setEndX(200.0);
 		line2.setEndY(600.0);
 		
-		line3.setStartX(0.0);
+		line3.setStartX(300.0);
 		line3.setStartY(-400.0);
-		line3.setEndX(0.0);
+		line3.setEndX(300.0);
 		line3.setEndY(600.0);
 		
-		line4.setStartX(100.0);
+		line4.setStartX(400.0);
 		line4.setStartY(-400.0);
-		line4.setEndX(100.0);
+		line4.setEndX(400.0);
 		line4.setEndY(600.0);
 		
-		line5.setStartX(200.0);
+		line5.setStartX(500.0);
 		line5.setStartY(-400.0);
-		line5.setEndX(200.0);
+		line5.setEndX(500.0);
 		line5.setEndY(600.0);
 			
 		transition1.setNode(circle1);
@@ -111,40 +112,44 @@ public class fallingNotes extends Application{
 		transition5.setCycleCount(transition1.INDEFINITE);
 		transition5.play();
 		
-		/*texts.setOnKeyPressed(new EventHandler<KeyEvent>() {
+		text.setLayoutX(300);
+		text.setLayoutY(300);
+		
+		Pane root = new Pane();
+		root.getChildren().addAll(clickCircle1, clickCircle2, clickCircle3, clickCircle4, clickCircle5);
+		root.getChildren().add(text);
+        root.getChildren().addAll(circle1, circle2, circle3, circle4, circle5);
+        Scene scene = new Scene(root, 600, 600);
+        stage.setResizable(false);
+        stage.setTitle("REEEEEEEEEEE");
+        stage.setScene(scene);
+        stage.show();
+        
+        text.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode() == KeyCode.SPACE){
-                  texts.setText("Space");
-                  score++;
+                	text.setText("" + score + "");
+                	score++;
                 }          
                 if(event.getCode() == KeyCode.D) {
-                	texts.setText("D");
+                	text.setText("" + score + "");
                 	score++;
                 }
                 if(event.getCode() == KeyCode.F) {
-                	texts.setText("F");
+                	text.setText("" + score + "");
                 	score++;
                 }
                 if(event.getCode() == KeyCode.J) {
-                	texts.setText("J");
+                	text.setText("" + score + "");
                 	score++;
                 }
                 if(event.getCode() == KeyCode.K) {      
-                	texts.setText("K");
+                	text.setText("" + score + "");
                 	score++;
                 }
             }
-        });*/
-		
-		StackPane root = new StackPane();
-		root.getChildren().addAll(clickCircle1, clickCircle2, clickCircle3, clickCircle4, clickCircle5);
-		root.getChildren().add(texts);
-        root.getChildren().addAll(circle1, circle2, circle3, circle4, circle5);
-        Scene scene = new Scene(root, 600, 600);
-        //stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        });
 	}
 
 	public static void main(String[] args) {
