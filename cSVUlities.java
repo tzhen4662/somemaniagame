@@ -1,59 +1,107 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.io.FileReader;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 public class cSVUlities 
 {
-	private String Name;
-	private int Score;
-	private ArrayList<String> CSVData = new ArrayList<String>();
-	private File CSV;
-	public cSVUlities(String Name, int Score, File CSV)
+	ArrayList<String> CSVData;
+	int rowLength;
+	
+	public cSVUlities(File csv) throws IOException
 	{
-		this.CSVData = getinfo(CSV);
-		this.CSV = CSV;
-		this.Name = Name;
-		this.Score = Score;
+		boolean toggle = true;
+		ArrayList<String> yes = new ArrayList<String>();
+		Path pathToFile = Paths.get(csv.getAbsolutePath());
+		BufferedReader buff = Files.newBufferedReader(pathToFile);
+		String line = buff.readLine();
+		while (line != null) { 
+			line = buff.readLine();
+			String[] attributes = null;
+			if (line != null) {
+				attributes = line.split(",");
+				if(toggle)
+				{
+					toggle = ! toggle;
+					this.rowLength = attributes.length;
+				}
+			} 
+			if (attributes != null) {
+				for (String x : attributes) {
+					yes.add(x);
+				} 
+			}
+		}
+		this.CSVData = yes;
 	}
-	public static void main(String[]args) throws IOException
+	
+	public ArrayList<String> getColumnHeaders()
 	{
-		File CSV = new File("test.csv");
-		String path = CSV.getAbsolutePath();
-	        System.out.println(path);
-	        writeCSV("Channer", 169, CSV);
-	        writeCSV("Jacky", 168, CSV);
-	        for (String x : getinfo(CSV))
-	            System.out.println(x + "");
-	}
-	public static ArrayList<String> getinfo(File CSV)
-	{
-		ArrayList<String> CSVData = new ArrayList<String>();
-		Path pathToFile = Paths.get(CSV.getAbsolutePath());
-		try (BufferedReader br = Files.newBufferedReader(pathToFile,StandardCharsets.US_ASCII))
+		ArrayList<String> yes = new ArrayList<String>();
+		for(int i = 0; i < rowLength; i++)
 		{
-			String line = br.readLine();
-			while(line != null)
-			{
-				CSVData.add(line);
-				line = br.readLine();
-			}
-		}		
-				catch (IOException ioe)
-			{
-				ioe.printStackTrace();
-			}
-		return CSVData;
+			yes.add(CSVData.get(i));
+		}
+		return yes;
 	}
-	public 
+	
+	public ArrayList<String> getColumnData(int column)
+	{
+		ArrayList<String> yes = new ArrayList<String>();
+		for(int i = column; i < this.CSVData.size(); i = i + rowLength)
+		{	String x = CSVData.get(i);
+			if(!(x.equals("")))
+			{
+				yes.add(CSVData.get(i));
+			}
+			else
+			{
+				yes.add("NULL");
+			}
+		}
+		return yes;
+	}
+	
+	public ArrayList<Integer> getDataInt(int column)
+	{
+		ArrayList<Integer> yes = new ArrayList<Integer>();
+		for(int i = column; i < this.CSVData.size(); i = i + rowLength)
+		{
+			String x =(CSVData.get(i));
+			if(!(x.equals("")))
+			{
+				yes.add(Integer.parseInt(x));
+			}
+			else
+			{
+				yes.add(null);
+			}
+		}
+		return yes;
+	}
+	
+	public ArrayList<Double> getDataDouble(int column)
+	{
+		ArrayList<Double> yes = new ArrayList<Double>();
+		for(int i = column; i < this.CSVData.size(); i = i + rowLength)
+		{
+			String x =(CSVData.get(i));
+			if(!(x.equals("")))
+			{
+				yes.add(Double.parseDouble(x));
+			}
+			else
+			{
+				yes.add(null);
+			}
+		}
+		return yes;
+	}
 	public static void writeCSV(String Name, int Score, File CSV) throws IOException
 	{
 		PrintWriter pw = new PrintWriter(CSV);
@@ -80,27 +128,4 @@ public class cSVUlities
         pw.close();
         magic.close();
 	}
-	//public static 
-/*	public static void checkScores(String Score, String Name)
-	{
-		ArrayList<String> csvCopy = CSVData;
-		for(int i = 3; i < CSVData.size(); i+= 2)
-		{
-			if(CSVData.get(i).equals(Score))
-			{
-				CSVData.set(i, Name);
-				CSVData.set(i+1, Score);
-			}
-		}
-	}
-	public static void printCSV(File CSV) throws IOException
-	{
-		  String currentLine;
-		  BufferedReader br;
-		  br = new BufferedReader(new FileReader("test.csv"));
-	        while ((currentLine = br.readLine()) != null) { 
-	            String[] str = currentLine.split(",");
-	            System.out.println("Name" + str[0] + ", Highscore" + str[1]); 
-	        }
-	}*/
 }

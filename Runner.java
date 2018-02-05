@@ -1,16 +1,18 @@
+
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Runner 
 {
 	public static void main(String[]args) throws IOException
 	{
-		File CSV = new File("test.csv");
-		String path = CSV.getAbsolutePath();
-	        System.out.println(path);
-	        cSVUlities.writeCSV("Channer", 169, CSV);
-	        cSVUlities.writeCSV("jacky", 26, CSV);
-	        for (String x : cSVUlities.getinfo(CSV))
-	            System.out.println(x + "");
+		ArrayList<String> cool = new ArrayList<String>();
+		File CVS = new File("test.csv");
+		cSVUlities test =  new cSVUlities(CVS);
+		cool = test.getColumnData(0);
+		for(int i = 0; i < cool.size(); i++) {   
+		    System.out.print(cool.get(i));
+		}  
 	}
 }
