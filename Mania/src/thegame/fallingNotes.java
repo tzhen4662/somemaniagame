@@ -12,10 +12,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+//https://stackoverflow.com/questions/30093230/how-do-i-return-a-node-to-its-original-position-after-a-rotation-transition
 public class fallingNotes extends Application{
 
 	private Random r = new Random();
@@ -40,16 +43,19 @@ public class fallingNotes extends Application{
 	private PathTransition transition4 = new PathTransition();
 	private PathTransition transition5 = new PathTransition();
 	private int score = 0;
-	private Text text = new Text("");
+	Text scenetitle = new Text("Score");
+	
 	
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		double n1 = r.nextDouble() + 2;
-		double n2 = r.nextDouble() + 2;
-		double n3 = r.nextDouble() + 2;
-		double n4 = r.nextDouble() + 2;
-		double n5 = r.nextDouble() + 2;
+	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+	    
+		double n1 = r.nextDouble() + 1.5;
+		double n2 = r.nextDouble() + 1.5;
+		double n3 = r.nextDouble() + 1.5;
+		double n4 = r.nextDouble() + 1.5;
+		double n5 = r.nextDouble() + 1.5;
 			
 		circle1.setRadius(20.0);
 		circle2.setRadius(20.0);
@@ -60,27 +66,27 @@ public class fallingNotes extends Application{
 		line1.setStartX(100.0);
 		line1.setStartY(-400.0);
 		line1.setEndX(100.0);
-		line1.setEndY(600.0);
+		line1.setEndY(590.0);
 		
 		line2.setStartX(200.0);
 		line2.setStartY(-400.0);
 		line2.setEndX(200.0);
-		line2.setEndY(600.0);
+		line2.setEndY(590.0);
 		
 		line3.setStartX(300.0);
 		line3.setStartY(-400.0);
 		line3.setEndX(300.0);
-		line3.setEndY(600.0);
+		line3.setEndY(590.0);
 		
 		line4.setStartX(400.0);
 		line4.setStartY(-400.0);
 		line4.setEndX(400.0);
-		line4.setEndY(600.0);
+		line4.setEndY(590.0);
 		
 		line5.setStartX(500.0);
 		line5.setStartY(-400.0);
 		line5.setEndX(500.0);
-		line5.setEndY(600.0);
+		line5.setEndY(590.0);
 			
 		transition1.setNode(circle1);
 		transition1.setDuration(Duration.seconds(n1));
@@ -112,12 +118,12 @@ public class fallingNotes extends Application{
 		transition5.setCycleCount(transition1.INDEFINITE);
 		transition5.play();
 		
-		text.setLayoutX(300);
-		text.setLayoutY(300);
+		scenetitle.setLayoutX(300);
+		scenetitle.setLayoutY(300);
 		
 		Pane root = new Pane();
 		root.getChildren().addAll(clickCircle1, clickCircle2, clickCircle3, clickCircle4, clickCircle5);
-		root.getChildren().add(text);
+		root.getChildren().add(scenetitle);
         root.getChildren().addAll(circle1, circle2, circle3, circle4, circle5);
         Scene scene = new Scene(root, 600, 600);
         stage.setResizable(false);
@@ -125,33 +131,34 @@ public class fallingNotes extends Application{
         stage.setScene(scene);
         stage.show();
         
-        text.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode() == KeyCode.SPACE){
-                	text.setText("" + score + "");
+                	scenetitle.setText("" + score + "");
                 	score++;
                 }          
                 if(event.getCode() == KeyCode.D) {
-                	text.setText("" + score + "");
+                	scenetitle.setText("" + score + "");
                 	score++;
                 }
                 if(event.getCode() == KeyCode.F) {
-                	text.setText("" + score + "");
+                	scenetitle.setText("" + score + "");
                 	score++;
                 }
                 if(event.getCode() == KeyCode.J) {
-                	text.setText("" + score + "");
+                	scenetitle.setText("" + score + "");
                 	score++;
                 }
                 if(event.getCode() == KeyCode.K) {      
-                	text.setText("" + score + "");
+                	scenetitle.setText("" + score + "");
                 	score++;
                 }
             }
         });
 	}
-
+	
+	
 	public static void main(String[] args) {
         Application.launch(args);    
     }
