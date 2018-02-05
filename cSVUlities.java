@@ -102,7 +102,7 @@ public class cSVUlities
 		}
 		return yes;
 	}
-	public static void writeCSV(String Name, int Scores, File CSV) throws IOException
+	public void writeCSV(String Name, int Scores, File CSV) throws IOException
 	{
 		PrintWriter pw = new PrintWriter(CSV);
         StringBuilder sb = new StringBuilder();
@@ -112,7 +112,6 @@ public class cSVUlities
         sb.append('\n');
         BufferedReader magic = new BufferedReader(new FileReader(CSV));
         String line = magic.readLine();
-        System.out.println(":thinking:");
         while ((line = magic.readLine()) != null)
         {
             String[] arr = line.split(",");

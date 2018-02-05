@@ -10,8 +10,11 @@ public class Runner
 		ArrayList<String> cools = new ArrayList<String>();
 		File CVS = new File("test.csv");
 		cSVUlities test =  new cSVUlities(CVS);
+		test.writeCSV("Brandon", 2007, CVS);
+		test.writeCSV("TIM", 6969, CVS);
 		cools = test.getColumnData(0);
-		for(int i = 0; i < cools.size(); i++) {   
+		for(int i = 0; i < cools.size(); i++)
+		{   
 		    System.out.print(cools.get(i));
 		}  
 	}
