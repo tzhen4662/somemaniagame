@@ -1,6 +1,7 @@
 package thegame;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,9 +17,14 @@ public class startScreen extends Application
 		@Override
 		public void start(Stage primaryStage) throws Exception
 		{
+			
+		    //button CSS
 			Label Title = new Label();
 			Title.setText("Game Title");
 			Title.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; -fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
+			Label Title2 = new Label();
+			Title2.setText("Controls");
+			Title2.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; -fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
 			Button button = new Button();
 			button.setText("Start");
 			button.setStyle("-fx-border-color: #0000ff; -fx-background-color: #00BFFF; -fx-font-size: 20px; -fx-text-fill: white;");
@@ -28,11 +34,46 @@ public class startScreen extends Application
 			Button button3 = new Button();
 			button3.setText("Controls");
 			button3.setStyle("-fx-border-color: #0000ff; -fx-background-color: #87CEFA; -fx-font-size: 20px; -fx-text-fill: white;");
-			
-			/*button.setMaxSize(500, 70);
-			button2.setMaxSize(500, 70);
-			button3.setMaxSize(500, 70);*/
-			
+			Button button4 = new Button();
+			button4.setText("'The controls are zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz "
+					+ "\n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+					+ "\n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+					+ "\n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'");
+			button4.setStyle("-fx-border-color: #0000ff; -fx-background-color: #00BFFF; -fx-font-size: 1.5em; -fx-text-fill: white;");
+			Button endButton = new Button();
+			endButton.setText("End Game");
+			endButton.setStyle("-fx-border-color: #99CCFF; -fx-background-color: #CCCCFF; -fx-font-size: 10px; -fx-text-fill: white;");
+
+		    //Buttons
+			Pane root = new Pane();
+			Pane root2 = new Pane();
+			root.getChildren().add(Title);
+			root2.getChildren().add(Title2);
+		    root.getChildren().add(button);
+		    root.getChildren().add(button2);
+		    root.getChildren().add(button3);
+		    root2.getChildren().add(button4);
+		    root.getChildren().add(endButton);
+		    Title.setLayoutX(210);
+			Title.setLayoutY(140);
+		    Title2.setLayoutX(220);
+			Title2.setLayoutY(140);
+			button.setLayoutX(270);
+			button.setLayoutY(250);
+			button2.setLayoutX(240);
+			button2.setLayoutY(310);
+			button3.setLayoutX(255);
+			button3.setLayoutY(370);
+			button4.setLayoutX(90);
+			button4.setLayoutY(240);
+			endButton.setLayoutX(0);
+			endButton.setLayoutY(0);
+		    Scene scene = new Scene(root, 600, 600);
+		    Scene Control = new Scene(root2, 600, 600);
+		    primaryStage.setScene(scene);
+		    primaryStage.show();
+		    
+			//Button Actions
 			button.setOnAction(value ->  {
 	        	System.out.println("Starting ");
 			});
@@ -40,27 +81,12 @@ public class startScreen extends Application
 	        	System.out.println("No Highscores ");
 			});
 			button3.setOnAction(value ->  {
+				//System.out.println("Controls ");
+				primaryStage.setScene(Control)
+			;});
+			button4.setOnAction(value ->  {
 	        	System.out.println("Controls ");
 			});
-	       
-			Pane root = new Pane();
-			root.getChildren().add(Title);
-		    root.getChildren().add(button);
-		    root.getChildren().add(button2);
-		    root.getChildren().add(button3);
-		    Title.setLayoutX(210);
-			Title.setLayoutY(140);
-			button.setLayoutX(270);
-			button.setLayoutY(250);
-			button2.setLayoutX(240);
-			button2.setLayoutY(310);
-			button3.setLayoutX(255);
-			button3.setLayoutY(370);
-		    Scene scene = new Scene(root, 600, 600);
-		    primaryStage.setScene(scene);
-		    primaryStage.show();
-		    
-		    /*scene.getStylesheets().add("CSS");
-		    stage.show();*/
+		    endButton.setOnAction(e -> Platform.exit());
 		}
 }
