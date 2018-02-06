@@ -5,6 +5,7 @@ import java.util.Random;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -18,7 +19,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-//https://stackoverflow.com/questions/30093230/how-do-i-return-a-node-to-its-original-position-after-a-rotation-transition
 public class fallingNotes extends Application{
 
 	private Random r = new Random();
@@ -91,32 +91,41 @@ public class fallingNotes extends Application{
 		transition1.setNode(circle1);
 		transition1.setDuration(Duration.seconds(n1));
 		transition1.setPath(line1);
-		transition1.setCycleCount(transition1.INDEFINITE); //transition1.INDEFINITE 
+		transition1.setCycleCount(5); //transition1.INDEFINITE 
 		transition1.play();
 		
 		transition2.setNode(circle2);
 		transition2.setDuration(Duration.seconds(n2));
 		transition2.setPath(line2);
-		transition2.setCycleCount(transition1.INDEFINITE);
+		transition2.setCycleCount(5);
 		transition2.play();
 		
 		transition3.setNode(circle3);
 		transition3.setDuration(Duration.seconds(n3));
 		transition3.setPath(line3);
-		transition3.setCycleCount(transition1.INDEFINITE);
+		transition3.setCycleCount(5);
 		transition3.play();
 		
 		transition4.setNode(circle4);
 		transition4.setDuration(Duration.seconds(n4));
 		transition4.setPath(line4);
-		transition4.setCycleCount(transition1.INDEFINITE);
+		transition4.setCycleCount(5);
 		transition4.play();
 		
 		transition5.setNode(circle5);
 		transition5.setDuration(Duration.seconds(n5));
 		transition5.setPath(line5);
-		transition5.setCycleCount(transition1.INDEFINITE);
+		transition5.setCycleCount(5);
 		transition5.play();
+		
+		if (clickCircle1.getBoundsInParent().intersects(circle1.getBoundsInParent()))
+		{
+			transition1.stop();
+			transition2.stop();
+			transition3.stop();
+			transition4.stop();
+			transition5.stop();
+		}
 		
 		scenetitle.setLayoutX(300);
 		scenetitle.setLayoutY(300);
@@ -157,6 +166,7 @@ public class fallingNotes extends Application{
             }
         });
 	}
+	
 	
 	
 	public static void main(String[] args) {
