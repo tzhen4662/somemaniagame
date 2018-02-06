@@ -8,10 +8,14 @@ public class Runner
 	public static void main(String[]args) throws IOException
 	{
 		ArrayList<String> cools = new ArrayList<String>();
-		File CVS = new File("test.csv");
+		File CVS = new File("test3.csv");
 		cSVUlities test =  new cSVUlities(CVS);
-		test.writeCSV("Brandon", 2007, CVS);
-		test.writeCSV("TIM", 6969, CVS);
+	//	test.addEntry("Brandon", 2007);
+	//	test.addEntry("Tim", 20352257);
+	//	test.addEntry("Zilong", 27);
+	//	test.addEntry("Jacky", 324);
+	//	test.writeCSV(CVS);
+	//	test.calculateScore();
 		cools = test.getColumnData(0);
 		for(int i = 0; i < cools.size(); i++)
 		{   

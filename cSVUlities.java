@@ -1,12 +1,14 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 public class cSVUlities 
 {
@@ -15,8 +17,8 @@ public class cSVUlities
 	
 	public cSVUlities(File csv) throws IOException
 	{
+		CSVData = new ArrayList<String>();
 		boolean toggle = true;
-		ArrayList<String> yes = new ArrayList<String>();
 		Path pathToFile = Paths.get(csv.getAbsolutePath());
 		BufferedReader buff = Files.newBufferedReader(pathToFile);
 		String line = buff.readLine();
@@ -33,11 +35,10 @@ public class cSVUlities
 			} 
 			if (attributes != null) {
 				for (String x : attributes) {
-					yes.add(x);
+					CSVData.add(x);
 				} 
 			}
 		}
-		this.CSVData = yes;
 	}
 	
 	public ArrayList<String> getColumnHeaders()
@@ -102,29 +103,42 @@ public class cSVUlities
 		}
 		return yes;
 	}
-	public void writeCSV(String Name, int Scores, File CSV) throws IOException
+	public void writeCSV(File CSV) throws IOException
 	{
-		PrintWriter pw = new PrintWriter(CSV);
+		FileWriter thing = new FileWriter(CSV,true);
         StringBuilder sb = new StringBuilder();
-        sb.append("Name");
-        sb.append(',');
-        sb.append("Highscore");
-        sb.append('\n');
-        BufferedReader magic = new BufferedReader(new FileReader(CSV));
-        String line = magic.readLine();
-        while ((line = magic.readLine()) != null)
+
+        for(int i = 0; i< CSVData.size(); i+=2)
         {
-            String[] arr = line.split(",");
-            sb.append(arr[0]);
-            sb.append(arr[1]);
-            line = magic.readLine();
+            sb.append(CSVData.get(i));
+            sb.append(',');
+            sb.append(CSVData.get(i+1));
+            sb.append('\n');
         }
-        sb.append(Name);
-        sb.append(',');
-        sb.append(Scores);
-        sb.append('\n');
-        pw.write(sb.toString());
-        pw.close();
-        magic.close();
+        thing.write(sb.toString());
+        thing.close();
+	}
+	public void addEntry(String Name, int Score)
+	{
+		CSVData.add(Name);
+		CSVData.add(Integer.toString(Score));
+	}
+	public void calculateScore()
+	{
+		ArrayList<Integer> numList = new ArrayList<Integer>();
+		for(int i = 3; i < (CSVData.size()-2)/2; i+=2)
+		{
+			numList.add(Integer.parseInt(CSVData.get(i)));
+		}
+		for(int i = 0; i <= numList.size(); i++)
+		{
+			System.out.println(numList.get(i));
+		}
+			Collections.sort(numList);
+			System.out.println("Everything Past here is Sorted!");
+		for(int i = 0; i <= numList.size(); i++)
+		{
+			System.out.println(numList.get(i));
+		}
 	}
 }
