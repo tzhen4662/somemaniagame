@@ -21,10 +21,12 @@ public class startScreen extends Application
 		    //button CSS
 			Label Title = new Label();
 			Title.setText("Game Title");
-			Title.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; -fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
+			Title.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; "
+					+ "-fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
 			Label controlTitle = new Label();
 			controlTitle.setText("Controls");
-			controlTitle.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; -fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
+			controlTitle.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; "
+					+ "-fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
 			Button button = new Button();
 			button.setText("Start");
 			button.setStyle("-fx-border-color: #0000ff; -fx-background-color: #00BFFF; -fx-font-size: 20px; -fx-text-fill: white;");
@@ -41,7 +43,7 @@ public class startScreen extends Application
 					+ "\n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'");
 			button4.setStyle("-fx-border-color: #0000ff; -fx-background-color: #00BFFF; -fx-font-size: 1.5em; -fx-text-fill: white;");
 			Button endButton = new Button();
-			endButton.setText("End Game");
+			endButton.setText("Close");
 			endButton.setStyle("-fx-border-color: #99CCFF; -fx-background-color: #CCCCFF; -fx-font-size: 15px; -fx-text-fill: white;");
 			Button BackButton = new Button();
 			BackButton.setText("Back");
@@ -87,7 +89,6 @@ public class startScreen extends Application
 	        	System.out.println("No Highscores ");
 			});
 			button3.setOnAction(value ->  {
-				//System.out.println("Controls ");
 				primaryStage.setScene(control)
 			;});
 			button4.setOnAction(value ->  {
@@ -95,7 +96,6 @@ public class startScreen extends Application
 			});
 		    endButton.setOnAction(e -> Platform.exit());
 			BackButton.setOnAction(value ->  {
-				//System.out.println("Controls ");
 				primaryStage.setScene(scene)
 			;});
 		}
