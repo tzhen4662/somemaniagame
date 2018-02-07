@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 public class cSVUlities 
 {
-	ArrayList<String> CSVData;
+	static ArrayList<String> CSVData;
 	int rowLength;
 	
 	public cSVUlities(File csv) throws IOException
@@ -118,7 +118,7 @@ public class cSVUlities
         thing.write(sb.toString());
         thing.close();
 	}
-	public void addEntry(String Name, int Score)
+	public static void addEntry(String Name, int Score)
 	{
 		CSVData.add(Name);
 		CSVData.add(Integer.toString(Score));
