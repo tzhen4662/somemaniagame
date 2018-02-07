@@ -3,13 +3,12 @@ package thegame;
 public class Notes {
 	private int notesX;
 	private int notesY;
-	private boolean hit;
+	boolean hit = false;
 	
-	public Notes(int x, int y, boolean hit)
+	public Notes(int x, int y)
 	{
 		this.notesX = x;
 		this.notesY = y;
-		this.hit = hit;
 	}
 	
 	public int getX()
