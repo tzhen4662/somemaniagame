@@ -2,6 +2,7 @@ package thegame;
 
 import java.util.Random;
 
+import javafx.animation.AnimationTimer;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -32,6 +33,7 @@ public class fallingNotes extends Application{
 	private Circle clickCircle3 = new Circle(300, 590, 20);
 	private Circle clickCircle4 = new Circle(400, 590, 20);
 	private Circle clickCircle5 = new Circle(500, 590, 20);
+	/*
 	private Line line1 = new Line();
 	private Line line2 = new Line();
 	private Line line3 = new Line();
@@ -42,8 +44,12 @@ public class fallingNotes extends Application{
 	private PathTransition transition3 = new PathTransition();
 	private PathTransition transition4 = new PathTransition();
 	private PathTransition transition5 = new PathTransition();
+	*/
 	private int score = 0;
 	Text scenetitle = new Text("Score");
+	long timeStep = System.nanoTime() + 10000000000L;
+	private String[] xValues = {"100","200","300","400","500"};
+	private int x = 0;
 	
 	
 	@Override
@@ -51,18 +57,13 @@ public class fallingNotes extends Application{
 		
 	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	    
-		double n1 = r.nextDouble() + 1.5;
-		double n2 = r.nextDouble() + 1.5;
-		double n3 = r.nextDouble() + 1.5;
-		double n4 = r.nextDouble() + 1.5;
-		double n5 = r.nextDouble() + 1.5;
-			
 		circle1.setRadius(20.0);
 		circle2.setRadius(20.0);
 		circle3.setRadius(20.0);
 		circle4.setRadius(20.0);
 		circle5.setRadius(20.0);
 		
+		/*
 		line1.setStartX(100.0);
 		line1.setStartY(-400.0);
 		line1.setEndX(100.0);
@@ -117,23 +118,31 @@ public class fallingNotes extends Application{
 		transition5.setPath(line5);
 		transition5.setCycleCount(5);
 		transition5.play();
+		*/
 		
-		if (clickCircle1.getBoundsInParent().intersects(circle1.getBoundsInParent()))
-		{
-			transition1.stop();
-			transition2.stop();
-			transition3.stop();
-			transition4.stop();
-			transition5.stop();
-		}
+		new AnimationTimer() {
+	        public void handle(long now) {   
+	        	int y = 0;
+	          for (int i = 0; i < xValues.length; i++)
+		      {
+		        	x = Integer.parseInt(xValues[i]);
+		      }
+	          Circle fallingCircle = new Circle(x, 0, 20);
+	          while (now > timeStep)
+	          {
+	        	  fallingCircle.setCenterY(y = y + 100);
+	          }
+	        }
+	    }.start();
+	    
 		
 		scenetitle.setLayoutX(300);
 		scenetitle.setLayoutY(300);
 		
 		Pane root = new Pane();
-		root.getChildren().addAll(clickCircle1, clickCircle2, clickCircle3, clickCircle4, clickCircle5);
+		//root.getChildren().addAll(clickCircle1, clickCircle2, clickCircle3, clickCircle4, clickCircle5);
 		root.getChildren().add(scenetitle);
-        root.getChildren().addAll(circle1, circle2, circle3, circle4, circle5);
+        //root.getChildren().addAll(circle1, circle2, circle3, circle4, circle5);
         Scene scene = new Scene(root, 600, 600);
         stage.setResizable(false);
         stage.setTitle("REEEEEEEEEEE");
