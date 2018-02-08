@@ -5,6 +5,12 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -80,6 +86,15 @@ public class startScreen extends Application
 		    Scene control = new Scene(root2, 600, 600);
 		    primaryStage.setScene(scene);
 		    primaryStage.show();
+		    
+		    BackgroundImage Background= new BackgroundImage(new Image("images/spacey.jpg",600,600,false,true),
+		            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+		              BackgroundSize.DEFAULT);
+		    root.setBackground(new Background(Background));
+		    BackgroundImage controlBackground= new BackgroundImage(new Image("images/spacey.jpg",600,600,false,true),
+		            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+		              BackgroundSize.DEFAULT);
+		    root2.setBackground(new Background(controlBackground));
 		    
 			//Button Actions
 			button.setOnAction(value ->  {
