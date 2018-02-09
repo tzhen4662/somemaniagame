@@ -51,6 +51,7 @@ public class fallingNotes extends Application{
 		circle5.setRadius(20.0);
 		
 		Timeline timeline = new Timeline();
+		timeline.setCycleCount(10);
 		KeyFrame kf1 = new KeyFrame(Duration.seconds(1.5),
 				//new KeyValue(circle1.centerXProperty(), 100),
 				new KeyValue(circle1.centerYProperty(), 650));
