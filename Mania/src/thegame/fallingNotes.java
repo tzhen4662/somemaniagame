@@ -5,23 +5,14 @@ import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
-import javafx.animation.PathTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.application.Application;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -44,7 +35,7 @@ public class fallingNotes extends Application{
 	private Circle clickCircle4 = new Circle(400, 590, 20);
 	private Circle clickCircle5 = new Circle(500, 590, 20);
 	
-	private int score = 0;
+	int score = 0;
 	Text scenetitle = new Text("Score");
 	
 	
