@@ -26,12 +26,12 @@ public class startScreen extends Application
 			
 		    //button CSS
 			Label Title = new Label();
-			Title.setText("Game Title");
-			Title.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; "
+			Title.setText("Falling Mania");
+			Title.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #00CCCC; "
 					+ "-fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
 			Label controlTitle = new Label();
 			controlTitle.setText("Controls");
-			controlTitle.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #0000CC; "
+			controlTitle.setStyle("-fx-background-color: #FFFFFF; -fx-font-size: 3em;	-fx-padding: 8 8 8 8; -fx-text-fill: #00CCCC; "
 					+ "-fx-border-width: 2; -fx-border-radius: 30; -fx-background-color: transparent; -fx-border-color: #99CCFF");
 			Button button = new Button();
 			button.setText("Start");
@@ -43,11 +43,9 @@ public class startScreen extends Application
 			button3.setText("Controls");
 			button3.setStyle("-fx-border-color: #0000ff; -fx-background-color: #87CEFA; -fx-font-size: 20px; -fx-text-fill: white;");
 			Button button4 = new Button();
-			button4.setText("'The controls are zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz "
-					+ "\n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-					+ "\n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-					+ "\n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \n zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'");
-			button4.setStyle("-fx-border-color: #0000ff; -fx-background-color: #00BFFF; -fx-font-size: 1.5em; -fx-text-fill: white;");
+			button4.setText("The controls are D, F, Space, J, and K. \nThe objective of the game is to press "
+					+ "\nthe key at the right time when the circle \nis falling.");
+			button4.setStyle("-fx-border-color: #0000ff; -fx-background-color: #00BFFF; -fx-font-size: 2em; -fx-text-fill: white;");
 			Button endButton = new Button();
 			endButton.setText("Close");
 			endButton.setStyle("-fx-border-color: #99CCFF; -fx-background-color: #CCCCFF; -fx-font-size: 15px; -fx-text-fill: white;");
@@ -66,7 +64,7 @@ public class startScreen extends Application
 		    root2.getChildren().add(button4);
 		    root.getChildren().add(endButton);
 		    root2.getChildren().add(BackButton);
-		    Title.setLayoutX(210);
+		    Title.setLayoutX(190);
 			Title.setLayoutY(140);
 		    controlTitle.setLayoutX(220);
 			controlTitle.setLayoutY(140);
