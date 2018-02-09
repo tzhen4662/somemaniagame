@@ -51,30 +51,27 @@ public class fallingNotes extends Application{
 		circle5.setRadius(20.0);
 		
 		Timeline timeline = new Timeline();
-
-        KeyFrame kf1 = new KeyFrame(Duration.seconds(1.5),
-                //new KeyValue(circle1.centerXProperty(), 100),
-                new KeyValue(circle1.centerYProperty(), 650));
-        KeyFrame kf2 = new KeyFrame(Duration.seconds(1.5),
-                //new KeyValue(circle2.centerXProperty(), 200),
+		KeyFrame kf1 = new KeyFrame(Duration.seconds(1.5),
+				//new KeyValue(circle1.centerXProperty(), 100),
+				new KeyValue(circle1.centerYProperty(), 650));
+		KeyFrame kf2 = new KeyFrame(Duration.seconds(1.5),
+				//new KeyValue(circle2.centerXProperty(), 200),
                 new KeyValue(circle2.centerYProperty(), 650));
-        KeyFrame kf3 = new KeyFrame(Duration.seconds(1.5),
+		KeyFrame kf3 = new KeyFrame(Duration.seconds(1.5),
                // new KeyValue(circle3.centerXProperty(), 300),
-                new KeyValue(circle3.centerYProperty(), 650));
-        KeyFrame kf4 = new KeyFrame(Duration.seconds(1.5),
+				new KeyValue(circle3.centerYProperty(), 650));
+		KeyFrame kf4 = new KeyFrame(Duration.seconds(1.5),
                // new KeyValue(circle4.centerXProperty(), 400),
                 new KeyValue(circle4.centerYProperty(), 650));
-        KeyFrame kf5 = new KeyFrame(Duration.seconds(1.5),
+		KeyFrame kf5 = new KeyFrame(Duration.seconds(1.5),
                 //new KeyValue(circle5.centerXProperty(), 500),
                 new KeyValue(circle5.centerYProperty(), 650));
-
         timeline.getKeyFrames().add(kf1);
         timeline.getKeyFrames().add(kf2);
         timeline.getKeyFrames().add(kf3);
         timeline.getKeyFrames().add(kf4);
         timeline.getKeyFrames().add(kf5);
-		
-        
+
 		scenetitle.setLayoutX(300);
 		scenetitle.setLayoutY(300);
 		
