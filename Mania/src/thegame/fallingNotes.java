@@ -58,27 +58,6 @@ public class fallingNotes extends Application{
 		circle3.setRadius(20.0);
 		circle4.setRadius(20.0);
 		circle5.setRadius(20.0);
-	
-		/*transition1.setToY(640);
-		transition1.setCycleCount(2);
-
-		transition2.setToY(640);
-		transition2.setCycleCount(2);
-
-		transition3.setToY(640);
-		transition3.setCycleCount(2);
-
-		transition4.setToY(640);
-		transition4.setCycleCount(2);
-
-		transition5.setToY(640);
-		transition5.setCycleCount(2);
-
-		transition1.play();
-		transition2.play();
-		transition3.play();
-		transition4.play();
-		transition5.play();*/
 		
 		Timeline timeline = new Timeline();
 
