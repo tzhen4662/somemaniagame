@@ -116,7 +116,7 @@ public class fallingNotes extends Application{
 	
 	public void getPoints(Circle dumb)
 	{
-		if (dumb.getCenterY() >= 580 && dumb.getCenterY() <= 600)
+		if (dumb.getCenterY() >= 570 && dumb.getCenterY() <= 600)
 		{
 			score = score + 300;
 		}

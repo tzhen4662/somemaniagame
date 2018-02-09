@@ -93,26 +93,33 @@ public class Test3 extends Application{
             public void handle(KeyEvent event) {      
                 if(event.getCode() == KeyCode.D) {
                 	if(circle1.intersects(line.getBoundsInLocal())) {
-                		getPoints(circle1);
+                		score += 100;
                 		scenetitle.setText("" + score + ""); 
                 	}
                 }
                 if(event.getCode() == KeyCode.F) {
-                	getPoints(circle2);
-                	scenetitle.setText("" + score + "");  
+                	if(circle2.intersects(line.getBoundsInLocal())) {
+                		getPoints(circle2);
+                		scenetitle.setText("" + score + ""); 
+                	}
                 }
                 if (event.getCode() == KeyCode.SPACE){
-                	getPoints(circle3);
-                	scenetitle.setText("" + score + "");
+                	if(circle3.intersects(line.getBoundsInLocal())) {
+                		getPoints(circle3);
+                		scenetitle.setText("" + score + ""); 
+                	}
                 }    
                 if(event.getCode() == KeyCode.J) {
-                	getPoints(circle4);
-                	scenetitle.setText("" + score + "");   
-
+                	if(circle4.intersects(line.getBoundsInLocal())) {
+                		getPoints(circle4);
+                		scenetitle.setText("" + score + ""); 
+                	}
                 }
                 if(event.getCode() == KeyCode.K) {     
-                	getPoints(circle5);
-                	scenetitle.setText("" + score + "");   
+                	if(circle5.intersects(line.getBoundsInLocal())) {
+                		getPoints(circle5);
+                		scenetitle.setText("" + score + ""); 
+                	}
                 }
             }
         });
