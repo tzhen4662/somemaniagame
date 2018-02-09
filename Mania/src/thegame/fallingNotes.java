@@ -82,21 +82,21 @@ public class fallingNotes extends Application{
 		
 		Timeline timeline = new Timeline();
 
-        KeyFrame kf1 = new KeyFrame(Duration.seconds(1),
-                new KeyValue(circle1.centerXProperty(), 100),
-                new KeyValue(circle1.centerYProperty(), 590));
-        KeyFrame kf2 = new KeyFrame(Duration.seconds(1),
-                new KeyValue(circle2.centerXProperty(), 200),
-                new KeyValue(circle2.centerYProperty(), 590));
-        KeyFrame kf3 = new KeyFrame(Duration.seconds(1),
-                new KeyValue(circle3.centerXProperty(), 300),
-                new KeyValue(circle3.centerYProperty(), 590));
-        KeyFrame kf4 = new KeyFrame(Duration.seconds(1),
-                new KeyValue(circle4.centerXProperty(), 400),
-                new KeyValue(circle4.centerYProperty(), 590));
-        KeyFrame kf5 = new KeyFrame(Duration.seconds(1),
-                new KeyValue(circle5.centerXProperty(), 500),
-                new KeyValue(circle5.centerYProperty(), 590));
+        KeyFrame kf1 = new KeyFrame(Duration.seconds(1.5),
+                //new KeyValue(circle1.centerXProperty(), 100),
+                new KeyValue(circle1.centerYProperty(), 650));
+        KeyFrame kf2 = new KeyFrame(Duration.seconds(1.5),
+                //new KeyValue(circle2.centerXProperty(), 200),
+                new KeyValue(circle2.centerYProperty(), 650));
+        KeyFrame kf3 = new KeyFrame(Duration.seconds(1.5),
+               // new KeyValue(circle3.centerXProperty(), 300),
+                new KeyValue(circle3.centerYProperty(), 650));
+        KeyFrame kf4 = new KeyFrame(Duration.seconds(1.5),
+               // new KeyValue(circle4.centerXProperty(), 400),
+                new KeyValue(circle4.centerYProperty(), 650));
+        KeyFrame kf5 = new KeyFrame(Duration.seconds(1.5),
+                //new KeyValue(circle5.centerXProperty(), 500),
+                new KeyValue(circle5.centerYProperty(), 650));
 
         timeline.getKeyFrames().add(kf1);
         timeline.getKeyFrames().add(kf2);
@@ -132,7 +132,7 @@ public class fallingNotes extends Application{
                 }
                 if (event.getCode() == KeyCode.SPACE){
                 	getPoints(circle3);
-                	scenetitle.setText("" + score + "");   
+                	scenetitle.setText("" + score + "");
                 }    
                 if(event.getCode() == KeyCode.J) {
                 	getPoints(circle4);
@@ -149,11 +149,11 @@ public class fallingNotes extends Application{
 	
 	public void getPoints(Circle dumb)
 	{
-		if (dumb.getCenterY() >= 585)
+		if (dumb.getCenterY() >= 580 && dumb.getCenterY() <= 600)
 		{
 			score = score + 300;
 		}
-		else if (dumb.getCenterY() >= 550)
+		else if (dumb.getCenterY() >= 560 && dumb.getCenterY() <= 620)
 		{
 			score = score + 100;
 		}
